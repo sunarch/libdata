@@ -2,14 +2,14 @@
 
 import argparse
 
-# Parse command line arguments
+# parse command line arguments #################################################
 
 parser = argparse.ArgumentParser(description="Process CLI args.")
 parser.add_argument("-m", "--mode", help="check mode", required=True)
 parser.add_argument("-p", "--part", help="check mode", required=True)
 args = parser.parse_args()
 
-# Constants
+# constants ####################################################################
 
 FILENAME_NAMES_FIRST_FEMALE = "names-first-female"
 FILENAME_NAMES_FIRST_MALE = "names-first-male"
@@ -24,7 +24,8 @@ KEYNAME_FREQUENCY = "freq"
 KEYNAME_CUMULATIVE_FREQUENCY = "cumulFreq"
 KEYNAME_RANK = "rank"
 
-# Function to determine last line
+# function to determine last line ##############################################
+
 def determine_last_line(arg_file_name):
     last_line = None
     infile = open(str(arg_file_name) + ".txt", "r")
@@ -33,7 +34,7 @@ def determine_last_line(arg_file_name):
     infile.close()
     return last_line
 
-# Formatting functions
+# formatting functions #########################################################
 
 def format_name(arg_value):
     return_part = '{"'
@@ -73,7 +74,8 @@ def format_line_end(arg_line, arg_last_line):
     else:
         return ",\n"
 
-# Function to write line format test to console
+# function to write line format test to console ################################
+
 def test_to_console(arg_file_name):
     print("Reformatting file '" + arg_file_name + "'", end="\n\n")
 
@@ -105,7 +107,8 @@ def test_to_console(arg_file_name):
     # Close file
     infile.close()
 
-# Function to write final full format to file
+# function to write final full format to file ##################################
+
 def write_to_file(arg_file_name, arg_var_name):
     print("Reformatting file '" + arg_file_name + "'", end="\n\n")
 
@@ -155,7 +158,7 @@ def write_to_file(arg_file_name, arg_var_name):
     infile.close()
     outfile.close()
 
-# Action
+# action #######################################################################
 
 print("Starting...", end="\n\n")
 
@@ -199,3 +202,5 @@ else:
     print("ERROR: Bad option value for mode")
 
 print("Done.", end="\n")
+
+# END ##########################################################################
